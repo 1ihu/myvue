@@ -1,22 +1,33 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
+    <div v-html="postForm.content" />
+    <Tinymce ref="editor" v-model="postForm.content" :height="400" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import Tinymce from '@/components/Tinymce'
 export default {
   name: 'Dashboard',
+  components: { Tinymce },
+  data() {
+    return {
+      postForm: {
+        content: ''
+      },
+      pa: '<p>asdasas</p>'
+    }
+  },
   computed: {
     ...mapGetters([
       'name'
     ])
   },
-   created(){
-    console.log(this.$route)
-  },
+  created() {
+    // console.log(postForm.)
+  }
 }
 </script>
 

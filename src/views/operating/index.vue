@@ -1,5 +1,5 @@
 <template>
-    <div>
-        运营
-    </div>
+  <div>
+    运营
+  </div>
 </template>

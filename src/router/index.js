@@ -53,61 +53,26 @@ export const constantRoutes = [
       component: () => import('@/views/dashboard/index'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
+  }, {
+    path: '/user',
+    component: Layout,
+    children: [{
+      path: 'user',
+      name: 'user',
+      component: () => import('@/views/user/index'),
+      meta: { title: '用户', icon: 'user' }
+    }]
   },
-  // new
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/base',
-  //   children: [{
-  //     path: 'base',
-  //     name: 'base',
-  //     component: () => import('@/views/base/index'),
-  //     meta: { title: '基础', icon: 'example' }
-  //   }]
-  // },
-  // // 资源
-  // {
-  //   path: '/resources',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'resources',
-  //     name: 'resources',
-  //     component: () => import('@/views/resources/index'),
-  //     meta: { title: '资源', icon: 'tree' }
-  //   }]
-  // },
-  // {
-  //   path: '/operating',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'operating',
-  //     name: 'operating',
-  //     component: () => import('@/views/operating/index'),
-  //     meta: { title: '运营', icon: 'nested' }
-  //   }]
-  // },
-  // {
-  //   path: '/application',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'application',
-  //     name: 'application',
-  //     component: () => import('@/views/application/index'),
-  //     meta: { title: '应用', icon: 'form' }
-  //   }]
-  // },
-  // {
-  //   path: '/statistical',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'statistical',
-  //     name: 'statistical',
-  //     component: () => import('@/views/statistical/index'),
-  //     meta: { title: '统计', icon: 'dashboard' }
-  //   }]
-  // },
-
+  {
+    path: '/activity',
+    component: Layout,
+    children: [{
+      path: 'activity',
+      name: 'activity',
+      component: () => import('@/views/activity/index'),
+      meta: { title: '活动', icon: 'link' }
+    }]
+  },
   {
     path: '/example',
     component: Layout,
@@ -143,74 +108,74 @@ export const constantRoutes = [
     ]
   },
 
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: '应用',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: {
+  //     title: '应用',
+  //     icon: 'nested'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'menu1',
+  //       component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: 'Menu1' },
+  //       children: [
+  //         {
+  //           path: 'menu1-1',
+  //           component: () => import('@/views/nested/menu1/menu1-1'),
+  //           name: 'Menu1-1',
+  //           meta: { title: 'Menu1-1' }
+  //         },
+  //         {
+  //           path: 'menu1-2',
+  //           component: () => import('@/views/nested/menu1/menu1-2'),
+  //           name: 'Menu1-2',
+  //           meta: { title: 'Menu1-2' },
+  //           children: [
+  //             {
+  //               path: 'menu1-2-1',
+  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+  //               name: 'Menu1-2-1',
+  //               meta: { title: 'Menu1-2-1' }
+  //             },
+  //             {
+  //               path: 'menu1-2-2',
+  //               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+  //               name: 'Menu1-2-2',
+  //               meta: { title: 'Menu1-2-2' }
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           path: 'menu1-3',
+  //           component: () => import('@/views/nested/menu1/menu1-3'),
+  //           name: 'Menu1-3',
+  //           meta: { title: 'Menu1-3' }
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: 'menu2',
+  //       component: () => import('@/views/nested/menu2/index'),
+  //       meta: { title: 'menu2' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: '统计', icon: 'link' }
-      }
-    ]
-  },
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+  //       meta: { title: '统计', icon: 'link' }
+  //     }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

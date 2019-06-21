@@ -1,5 +1,5 @@
 <template>
-    <div>
-        统计
-    </div>
+  <div>
+    统计
+  </div>
 </template>
