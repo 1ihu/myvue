@@ -4,6 +4,7 @@
       <el-form-item label prop="user">
         <el-input v-model="formInline.user" placeholder="用户名" />
       </el-form-item>
+
       <el-form-item label prop="status">
         <el-select v-model="formInline.status" clearable placeholder="请选择状态" style="width:140px">
           <el-option label="正常" value="1" />

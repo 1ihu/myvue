@@ -4,17 +4,30 @@
     <el-row :gutter="12">
       <el-col :xs="24" :sm="8" :md="6">
         <el-card shadow="never">
-          <div class="dw discount">
-            <div class="unitsbox">
-              <div class="unitsNumber">{{ unitsNumber }}</div>
-              <div class="units">折</div>
-            </div>
-            <div class="submitClick">
-              <el-input-number v-model="discount" :disabled="unitsdisabled" :precision="1" :step="0.1" :min="1" :max="10" />
-              <el-button :type="btntype.type" plain style="margin-left:20px" @click="Sunbmitedit">{{ btntype.text }}</el-button>
+          <div class="dw">
+            <monthly-income
+              :chart-data="jcdata"
+              :options="optionsjc"
+            />
+            <div class="chartbox">
+              <svg-icon icon-class="jc" class="home_icon" />
+              <div class="people"><countTo :start-val="startVal" :end-val="endVal" :duration="3000" /></div>
             </div>
           </div>
-
+        </el-card>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="6">
+        <el-card shadow="never">
+          <div class="dw">
+            <monthly-income
+              :chart-data="data"
+              :options="oneself"
+            />
+            <div class="chartbox">
+              <svg-icon icon-class="h5__icon_4" class="home_icon" />
+              <div class="people"><countTo :start-val="startVal" :end-val="endVal" :duration="3000" /></div>
+            </div>
+          </div>
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="8" :md="6">
@@ -45,20 +58,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="8" :md="6">
-        <el-card shadow="never">
-          <div class="dw">
-            <monthly-income
-              :chart-data="jcdata"
-              :options="optionsjc"
-            />
-            <div class="chartbox">
-              <svg-icon icon-class="jc" class="home_icon" />
-              <div class="money"><countTo :start-val="startVal" :end-val="endVal" :duration="3000" /></div>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
+
     </el-row>
 
   </div>
@@ -117,6 +117,7 @@ export default {
       optionspeople: _.merge({}, options, { title: { text: '免单数（单）' }}),
       optionsmoney: _.merge({}, options, { title: { text: '免单金额（元）' }}),
       optionsjc: _.merge({}, options, { title: { text: '奖池（元）' }}),
+      oneself: _.merge({}, options, { title: { text: '排名（位）' }}),
       jcdata: _.merge({}, data, { datasets: [{ backgroundColor: '#FC4971' }], labels: ['免单奖池'] }),
       pa: '<p>asdasas</p>'
     }

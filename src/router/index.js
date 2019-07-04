@@ -44,6 +44,12 @@ export const constantRoutes = [
   },
 
   {
+    path: '/consumption',
+    component: () => import('@/views/consumption'),
+    hidden: true
+  },
+
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
@@ -72,41 +78,50 @@ export const constantRoutes = [
       component: () => import('@/views/activity/index'),
       meta: { title: '活动', icon: 'link' }
     }]
-  },
-  {
-    path: '/example',
+  }, {
+    path: '/merchants',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '资源', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
+    children: [{
+      path: 'merchants',
+      name: 'merchants',
+      component: () => import('@/views/merchants/index'),
+      meta: { title: '商家', icon: 'form' }
+    }]
   },
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/table',
+  //   name: 'Example',
+  //   meta: { title: '资源', icon: 'example' },
+  //   children: [
+  //     {
+  //       path: 'table',
+  //       name: 'Table',
+  //       component: () => import('@/views/table/index'),
+  //       meta: { title: 'Table', icon: 'table' }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       component: () => import('@/views/tree/index'),
+  //       meta: { title: 'Tree', icon: 'tree' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '运营', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: '运营', icon: 'form' }
+  //     }
+  //   ]
+  // },
 
   // {
   //   path: '/nested',

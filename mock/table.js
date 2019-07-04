@@ -5,9 +5,12 @@ const data = Mock.mock({
     id: '@id',
     title: '@cparagraph(0, 1)',
     'status|1': [0, 1],
+    'userstatus|1': [true, false],
     author: 'name',
     display_time: '@datetime',
-    pageviews: '@integer(300, 5000)'
+    pageviews: '@integer(300, 5000)',
+    'amount|1-2000': 100
+
   }]
 })
 
