@@ -77,6 +77,11 @@ export const constantRoutes = [
       name: 'activity',
       component: () => import('@/views/activity/index'),
       meta: { title: '活动', icon: 'link' }
+    }, {
+      path: '/activity/submitgoods',
+      name: 'submitgoods',
+      component: () => import('@/views/activity/submit/index'),
+      hidden: true
     }]
   }, {
     path: '/merchants',

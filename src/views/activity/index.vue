@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form ref="ruleForm" :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form ref="ruleForm" :inline="true" :model="formInline" label-position="top" class="demo-form-inline">
       <el-form-item label prop="user">
         <el-input v-model="formInline.user" placeholder="用户名" />
       </el-form-item>
@@ -81,19 +81,6 @@
           </div>
         </template>
       </el-table-column>
-      <!-- <el-table-column label="操作" align="center" min-width="200px">
-        <template slot-scope="scope">
-          <template v-if="scope.row.status">
-            <el-switch
-              v-model="scope.row.userstatus"
-              active-color="#ff4949"
-              active-text="禁止免单"
-              inactive-text="允许免单"
-              @change="changeSwitch(scope.row)"
-            />
-          </template>
-        </template>
-      </el-table-column> -->
       <el-table-column align="center" prop="created_at" label="免单时间" width="200">
         <template slot-scope="scope">
           <i class="el-icon-time" />
@@ -118,80 +105,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <!-- 弹窗 -->
-    <el-dialog
-      title="明细"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-    >
-      <el-form ref="ruleForm" :rules="rules" label-width="120px" label-position="right" :model="formrefundMsg" class="demo-form-inline">
-        <el-form-item label="用户名:">
-          李明
-        </el-form-item>
-        <el-form-item label="联系方式:">
-          李明
-        </el-form-item>
-        <el-form-item label="付款方式:">
-          支付宝
-        </el-form-item>
-        <el-form-item label="付款金额:">
-          1234
-        </el-form-item>
-        <el-form-item label="退款交易码:" prop="code">
-          <el-input v-model="formrefundMsg.code" type="password" />
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" :loading="formrefundMsg.loading" @click="onrefundSubmit('ruleForm')">确 定</el-button>
-      </span>
-    </el-dialog>
-
-    <el-dialog
-      title="明细"
-      :visible.sync="ConsumerFormrefundMsg.ConsumedialogVisible"
-      width="45%"
-      :before-close="ConsumehandleClose"
-    >
-      <el-form ref="ConsumeruleForm" :rules="rules" label-width="80px" label-position="right" :model="ConsumerFormrefundMsg" class="demo-form-inline">
-        <el-form-item label="用户名:">
-          <el-input v-model="ConsumerFormrefundMsg.account" />
-        </el-form-item>
-        <el-form-item label="联系方式:">
-          <el-input v-model="ConsumerFormrefundMsg.tel" />
-        </el-form-item>
-        <el-form-item label="付款方式:">
-          <el-radio-group v-model="ConsumerFormrefundMsg.Paytype">
-            <el-radio :label="1"><svg-icon icon-class="zfbxf" class="" />支付宝</el-radio>
-            <el-radio :label="2"><svg-icon icon-class="wxxf" class="" />微信</el-radio>
-            <el-radio :label="3"><svg-icon icon-class="yhkxf" class="" />银行卡</el-radio>
-            <el-radio :label="4"><svg-icon icon-class="xjxf" class="" />现金</el-radio>
-            <el-radio :label="5"><svg-icon icon-class="qtfs" class="" />其他</el-radio>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="付款金额:">
-          <el-input v-model="ConsumerFormrefundMsg.Paymoney" />
-        </el-form-item>
-        <el-form-item label="推荐人:">
-          <el-select v-model="ConsumerFormrefundMsg.recommended" filterable placeholder="请选择">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-              <span style="float: left">{{ item.label }}</span>
-              <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-            </el-option>
-          </el-select>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" :loading="ConsumerFormrefundMsg.loading" @click="ConsumerOnrefundSubmit('ConsumeruleForm')">确 定</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
@@ -204,15 +117,7 @@ const formInline = {
   freestatus: '',
   recommended: ''
 }
-const ConsumerFormrefundMsg = {
-  account: '',
-  tel: '',
-  Paytype: '',
-  Paymoney: '',
-  loading: false,
-  ConsumedialogVisible: false
 
-}
 export default {
   filters: {
     statusFilter(status) {
@@ -235,30 +140,8 @@ export default {
       list: null,
       listLoading: true,
       formInline: Object.assign({}, formInline),
-      dialogVisible: false,
-      formrefundMsg: {
-        code: '',
-        loading: false
-      },
-      ConsumerFormrefundMsg: Object.assign({}, ConsumerFormrefundMsg),
-      rules: { code: [{ required: true, message: '请输入退款交易码', trigger: 'blur' }] },
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      value: ''
+      dialogVisible: false
+
     }
   },
 
@@ -267,35 +150,9 @@ export default {
   },
   methods: {
     Downpay() {
-      this.ConsumerFormrefundMsg.ConsumedialogVisible = true
+      this.$router.push('/activity/submitgoods')
     },
-    onrefundSubmit(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.formrefundMsg.loading = true
-          alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
-    ConsumehandleClose(done) {
-      this.formrefundMsg.loading = false
-      this.$confirm('确认关闭？', { type: 'warning' })
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
-    },
-    handleClose(done) {
-      this.formrefundMsg.loading = false
-      this.$confirm('确认关闭？', { type: 'warning' })
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
-    },
+
     refundMsgClick() {
       this.dialogVisible = true
     },
